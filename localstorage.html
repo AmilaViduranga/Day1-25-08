@@ -1,0 +1,175 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Untitled Document</title>
+<style type="text/css">
+.Header {
+	color: #FFF;
+	font-weight: bold;
+}
+.textfield
+{
+	width:90%;
+	height:100%;
+}
+.buttonProperty
+{
+	width:25%;
+	height:100%;
+	
+}
+.footerProperty
+{
+	bgcolor:#837B7B;
+}
+.fotterText {
+	color: #FFF;
+}
+div {
+    
+    opacity: 0.75;
+    
+}
+</style>
+</head>
+
+<body background="baby-blue-background-light-colour.jpg" onload = "loadValues();">
+<form  id="loginForm" action="" method="post" onsubmit ="return ManageLogin();">
+<div>
+<table width="1300px" height="650px"   border="0" bordercolor="#E8E8E8">
+  <tr>
+    <th colspan="3" bgcolor="#837B7B" class="Header" scope="row" opacity="1.0"><h1>Sample Login Page</h1></th>
+  </tr>
+ 
+  <tr bgcolor="#E8E8E8">
+    <th width="33%" scope="row">&nbsp;</th>
+    <td colspan="2" align="center"><b><h1>sign up</h1></b></td>
+    
+  </tr>
+  
+  <tr bgcolor="#E8E8E8">
+    <th scope="row">Your Name</th>
+    <td  colspan="2"><input type="text" placeholder=" Type name" id="userName" class="textfield" /></td>
+   
+  </tr>
+  
+  <tr bgcolor="#E8E8E8">
+    <th scope="row">Your Email</th>
+    <td colspan="2"><input type="text" placeholder=" Type Email" id="userEmail" class="textfield" /></td>
+ 
+  </tr>
+  
+  <tr bgcolor="#E8E8E8">
+    <th scope="row">Your Password</th>
+    <td colspan="2"><input type="password" placeholder=" Type Password" id="userPassword" class="textfield" /></td>
+    
+  </tr>
+  
+  <tr bgcolor="#E8E8E8">
+    <th scope="row">Confirm Password</th>
+    <td colspan="2"><input type="password" placeholder=" confirm password" id="userConfirm" class="textfield" /></td>
+    
+  </tr>
+
+  <tr bgcolor="#E8E8E8">
+    <th scope="row">Telephone Number</th>
+    <td colspan="2"><input type="text" placeholder=" Telephone number" id="userTel" class="textfield" /></td>
+    
+  </tr>
+  <tr bgcolor="#E8E8E8">
+    <th scope="row">School</th>
+    <td colspan="2"><input type="text" placeholder=" type School" id="userSchool" class="textfield" /></td>
+    
+  </tr>
+  <tr bgcolor="#E8E8E8">
+    <th scope="row">City</th>
+    <td colspan="2"><input type="text" placeholder=" type City" id="userCity" class="textfield" /></td>
+    
+  </tr>
+
+  
+  <tr bgcolor="#E8E8E8">
+    <th scope="row">&nbsp;</th>
+    
+    <td align="right" colspan="2"><input type="submit" value="submit"  class="buttonProperty"  /></td>
+  </tr>
+  
+  <tr bgcolor="#837B7B">
+  <td colspan="3" class="fotterText" align="center" opacity="1.0" >Author :- Amila Viduranga Purpose :- Sample Clasical Basic Design </td>
+  </tr>
+</table>
+</div>
+
+</form>
+
+<script type="text/javascript">
+function ManageLogin()
+{
+
+    var username = document.getElementById("userName").value;
+    var email = document.getElementById("userEmail").value;
+    var password = document.getElementById("userPassword").value;
+    var confirmPass = document.getElementById("userConfirm").value;
+    var telephone = document.getElementById("userTel").value;
+    var school = document.getElementById("userSchool").value;
+    var city = document.getElementById("userCity").value;
+    var result;
+
+    if(username == ""||email == ""||password == ""||confirmPass == ""||telephone == ""||school == ""||
+        city == "")
+    {
+        alert("Some text Fields are empty, please check them");
+
+
+
+    }
+    else
+    {
+        result = setValuesLocalStore(username,email,password,telephone,school,city);
+        if(result == true)
+        {
+            alert("Successfull add values to local Storage");
+        }
+        else
+        {
+            alert("There is a problem");
+        }
+    }
+
+
+
+
+}
+function setValuesLocalStore(user,email,pass,tel,school,city)
+{
+    localStorage.setItem('UserName',user);
+    localStorage.setItem('UserEmail',email);
+    localStorage.setItem('UserPass',pass);
+    localStorage.setItem('UserTel',tel);
+    localStorage.setItem('UserSchool',school);
+    localStorage.setItem('UserCity',city);
+    return true;
+}
+
+function loadValues()
+{
+    document.getElementById("userName").value = localStorage.getItem('UserName');
+    document.getElementById("userEmail").value = localStorage.getItem('UserEmail');
+    document.getElementById("userPassword").value = localStorage.getItem('UserPass');
+    document.getElementById("userSchool").value = localStorage.getItem('UserSchool');
+    document.getElementById("userCity").value = localStorage.getItem('UserCity');
+    document.getElementById("userTel").value = localStorage.getItem('UserTel');
+}
+
+
+/*function loadValues()
+{
+    document.getElementById("userName").value = localStorage.getItem(UserName);
+}*/
+</script>
+</body>
+</html>
+
+
