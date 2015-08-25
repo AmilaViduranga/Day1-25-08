@@ -1,0 +1,205 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Untitled Document</title>
+<style type="text/css">
+.Header {
+	color: #FFF;
+	font-weight: bold;
+}
+.textfield
+{
+	width:90%;
+	height:100%;
+}
+.buttonProperty
+{
+	width:25%;
+	height:100%;
+	
+}
+.footerProperty
+{
+	bgcolor:#837B7B;
+}
+
+
+.fotterText {
+	color: #FFF;
+}
+div {
+    
+    opacity: 0.75;
+    
+}
+</style>
+</head>
+
+<body background="baby-blue-background-light-colour.jpg">
+<form  id="loginForm" action="" method="post">
+<div>
+<table width="1300px" height="650px"   border="0" bordercolor="#E8E8E8">
+  <tr>
+    <th colspan="3" bgcolor="#837B7B" class="Header" scope="row" opacity="1.0"><h1>Sample Login Page</h1></th>
+  </tr>
+ 
+  <tr bgcolor="#E8E8E8">
+    <th width="33%" scope="row">&nbsp;</th>
+    <td colspan="2" align="center"><b><h1>sign up</h1></b></td>
+    
+  </tr>
+  
+  <tr bgcolor="#E8E8E8">
+    <th scope="row">Your Name</th>
+    <td  colspan="2"><input type="text" placeholder=" Type name" id="userName" class="textfield" /></td>
+   
+  </tr>
+  
+  <tr bgcolor="#E8E8E8">
+    <th scope="row">Your Email</th>
+    <td colspan="2"><input type="text" placeholder=" Type Email" id="userEmail" class="textfield" /></td>
+ 
+  </tr>
+  
+  <tr bgcolor="#E8E8E8">
+    <th scope="row">Your Password</th>
+    <td colspan="2"><input type="password" placeholder=" Type Password" id="userPassword" class="textfield" /></td>
+    
+  </tr>
+  
+  <tr bgcolor="#E8E8E8">
+    <th scope="row">Confirm Password</th>
+    <td colspan="2"><input type="password" placeholder=" confirm password" id="userConfirm" class="textfield" /></td>
+    
+  </tr>
+
+  <tr bgcolor="#E8E8E8">
+    <th scope="row">Telephone Number</th>
+    <td colspan="2"><input type="text" placeholder=" Telephone number" id="userTel" class="textfield" /></td>
+    
+  </tr>
+  <tr bgcolor="#E8E8E8">
+    <th scope="row">School</th>
+    <td colspan="2"><input type="text" placeholder=" type School" id="userSchool" class="textfield" /></td>
+    
+  </tr>
+  <tr bgcolor="#E8E8E8">
+    <th scope="row">City</th>
+    <td colspan="2"><input type="text" placeholder=" type City" id="userCity" class="textfield" /></td>
+    
+  </tr>
+
+  
+  <tr bgcolor="#E8E8E8">
+    <th scope="row">&nbsp;</th>
+    
+    <td align="right" colspan="2"><input type="button" value="submit"  class="buttonProperty" onClick = "storeLocalContent(
+
+    	document.querySelector('#userName').value,
+    	document.querySelector('#userEmail').value,
+    	document.querySelector('#userPassword').value,
+    	document.querySelector('#userTel').value,
+    	document.querySelector('#userSchool').value,
+    	document.querySelector('#userCity').value
+
+
+    	)" /></td>
+  </tr>
+  
+  <tr bgcolor="#837B7B">
+  <td colspan="3" class="fotterText" align="center" opacity="1.0" >Author :- Amila Viduranga Purpose :- Sample Clasical Basic Design </td>
+  </tr>
+</table>
+</div>
+
+</form>
+
+<script type="text/javascript">
+function ManageLogin()
+{
+	
+	var username = document.getElementById("userName").value;
+	var email = document.getElementById("userEmail").value;
+	var password = document.getElementById("userPassword").value;
+	var confirmPass = document.getElementById("userConfirm").value;
+	var result;
+						if(email.indexOf("@") == -1 && email.indexOf(".") == -1)
+						{
+							
+							result = false;
+						}
+						if(email.indexOf("@") > email.indexOf("."))
+						{
+							result = false;
+						}
+						if(password.length != 8)
+						{
+							result = false;
+						}
+						if(password != confirmPass)
+						{
+							result = false;
+						}
+					
+					
+			if(result == false)
+			{
+				alert("Validation error,please check it");
+			}
+			else
+			{
+				alert("Successfully login");
+				alert("Name is "+username+" Email is "+email+" password is "+password);
+				Redirect();
+
+			}
+	
+	function Redirect() {
+                window.location.assign("http://www.w3schools.com");
+            }
+
+	
+}
+function initilizeValues()
+{
+	var existLocal = (('localSorage' in window) && window['localSorage'] == null);
+	if(!existLocal)
+	{
+		var newDiv = document.createElement("div");
+		var message = document.createTextNode("Sory there is no local storage");
+		newDiv.appendChild(message);
+		document.body.appendChild(newDiv);
+		return;
+	}
+	if(window.localSorage.length!= 0)
+	{
+		document.getElementById("userName").value = window.localSorage.getItem("userName");
+		document.getElementById("userEmail").value = window.localSorage.getItem("userEmail");
+		document.getElementById("userPassword").value = window.localSorage.getItem("userPassword");
+		document.getElementById("userTel").value = window.localSorage.getItem("userTel");
+		document.getElementById("userSchool").value = window.localSorage.getItem("userSchool");
+		document.getElementById("userCity").value = window.localSorage.getItem("userCity");
+	}
+
+}
+
+function storeLocalContent(name,email,password,tel,school,city)
+{
+	window.localSorage.setItem('userName',name);
+	window.localSorage.setItem('userEmail',email);
+	window.localSorage.setItem('userPassword',password);
+	window.localSorage.setItem('userTel',tel);
+	window.localSorage.setItem('userSchool',school);
+	window.localSorage.setItem('userCity',city);
+	
+	
+
+
+}
+window.onload = initilizeValues ;
+</script>
+</body>
+</html>
+
