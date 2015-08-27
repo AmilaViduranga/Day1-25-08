@@ -98,6 +98,11 @@ function ManageLogin()
 	var password = document.getElementById("userPassword").value;
 	var confirmPass = document.getElementById("userConfirm").value;
 	var result;
+
+	if(username == ""||email == "" || password == ""||confirmPass == "")
+		alert("Some text fields are empty");
+	else
+	{
 						if(email.indexOf("@") == -1 && email.indexOf(".") == -1)
 						{
 							
@@ -128,13 +133,14 @@ function ManageLogin()
 				Redirect();
 
 			}
-	
+	}
+}
 	function Redirect() {
-                window.location.assign("http://www.w3schools.com")
+                window.location.assign("http://www.google.com");
             }
 
 	
-}
+
 </script>
 </body>
 </html>
